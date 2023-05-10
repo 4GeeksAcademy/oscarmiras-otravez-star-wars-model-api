@@ -43,14 +43,7 @@ def get_users():
     users = User.query.all()
 
     # crea una lista de diccionarios con la información de cada usuario
-    user_list = [
-        {
-            "id": user.id,
-            "email": user.email
-            # agrega aquí cualquier otra información que quieras devolver
-        }
-        for user in users
-    ]
+    user_list = [element.serialize() for element in users]
 
     return jsonify(user_list), 200
 
